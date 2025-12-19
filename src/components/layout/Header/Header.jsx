@@ -53,7 +53,13 @@ function Header() {
                 onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
                 className="w-[60px] group text-gray-600 hover:text-gray-900 text-sm transition-colors flex items-center"
               >
-                <CurrencyIcon size={20} className="mr-2 text-[#ADB7C0] group-hover:text-gray-900 transition-colors" />
+                <CurrencyIcon
+                  size={20}
+                  className={`mr-2 transition-colors ${isCurrencyDropdownOpen
+                      ? 'text-gray-900' // или твой акцентный цвет
+                      : 'text-[#ADB7C0] group-hover:text-gray-900'
+                    }`}
+                />
                 {selectedCurrency}
               </button>
               <div ref={currencyDropdownRef} className={`absolute top-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-10 w-20 transition-all duration-300 ${isCurrencyDropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
@@ -76,7 +82,7 @@ function Header() {
             </a>
           </nav>
 
-          
+
           <div className="flex items-center">
             <a href="tel:88002560720" className="text-[#27314A] hover:text-gray-900 transition-colors">8 800 2560-720</a>
             <button
