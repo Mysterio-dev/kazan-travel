@@ -1,0 +1,71 @@
+.form-control {
+  position: relative;
+}
+
+.form-label {
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+  top: .715rem;
+  left: 1rem;
+  pointer-events: none;
+  color: rgba(39, 49, 74, 1);
+}
+
+.form-input {
+  width: 100%;
+  height: 68px;
+  outline: 0;
+  border: 1px solid #F1ECEC;
+  border-radius: 20px;
+  padding: 45px 16px 20px;
+  background: transparent;
+  transition:
+    border-color 0.12s ease,
+    transform 0.08s ease;
+}
+
+.form-input::placeholder {
+  color: #BBBDC3;
+}
+
+.form-input:hover {
+  border-color: #dadada;
+}
+
+.form-input:focus {
+  border-color: var(--main-accent-color);
+}
+
+.form-input:focus {
+  border-color: var(--main-accent-color);
+}
+
+.email-input {
+  height: 68px;
+  border-radius: 20px;
+}
+
+
+.btn-primary-lg {
+  width: 215px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-radius: 14px;
+  background: linear-gradient(-11deg, #318EEB, #00D5FF);
+  color: white;
+  font-weight: 300;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: filter 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-primary-lg:hover {
+  filter: brightness(1.15); 
+}

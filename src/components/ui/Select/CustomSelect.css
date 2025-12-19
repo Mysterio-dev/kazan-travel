@@ -1,0 +1,32 @@
+.form-select {
+    width: 100%;
+    height: 68px;
+    outline: 0;
+    border: 1px solid #F1ECEC;
+    border-radius: 20px;
+    padding: 18px 16px;
+    background: 0 0;
+    color: #000;
+    transition:
+        border-color 0.12s ease,
+        transform 0.08s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.form-select:hover {
+    border-color: #dadada;
+}
+
+.form-select:focus {
+    border-color: var(--main-accent-color);
+}
+
+.form-select option:disabled {
+    color: #BBBDC3;
+}
+
+
+
