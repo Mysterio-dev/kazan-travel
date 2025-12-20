@@ -17,8 +17,8 @@ const PersonalDataForm = () => {
 
     return (
         <div className="personal-data-form">
-            <h2 className="text-lg mb-4">Личные данные</h2>
-            <div className="grid grid-cols-3 gap-4 mb-8">
+            <h2 className="text-lg mb-3 md:mb-4">Личные данные</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6 md:mb-8">
                 <div className='form-control'>
                     <label className="form-label">Ваше имя</label>
                     <input
@@ -47,8 +47,8 @@ const PersonalDataForm = () => {
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-4 gap-4 mb-13">
-                <div className="form-control relative">
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mb-6 md:mb-13">
+                <div className="form-control">
                     <label className="form-label">Дата рождения</label>
                     <IMaskInput
                         mask="00.00.0000"
@@ -93,8 +93,8 @@ const PersonalDataForm = () => {
                 </div>
 
             </div>
-            <h2 className="text-lg mb-4">Паспорт РФ</h2>
-            <div className="grid grid-cols-3 gap-4 mb-7">
+            <h2 className="text-lg mb-3 md:mb-4">Паспорт РФ</h2>
+<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 mb-5 md:mb-7">
                 <div className="form-control">
                     <label className="form-label">Серия и номер паспорта</label>
                     <IMaskInput
@@ -125,8 +125,8 @@ const PersonalDataForm = () => {
                 </div>
 
             </div>
-            <h2 className="text-lg mb-4">Контактные данные</h2>
-            <div className="grid grid-cols-3 gap-4 mb-10">
+            <h2 className="text-lg mb-3 md:mb-4">Контактные данные</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6 md:mb-10">
                 <div className="form-control">
                     <label className="form-label">Номер телефона</label>
                     <IMaskInput
@@ -147,7 +147,7 @@ const PersonalDataForm = () => {
                 </div>
             </div>
 
-            <button className="btn-primary-lg">Сохранить</button>
+            <button className="btn-primary-lg w-full sm:w-[215px] h-[50px]">Сохранить</button>
 
 
         </div>

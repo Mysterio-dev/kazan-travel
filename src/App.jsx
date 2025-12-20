@@ -19,10 +19,10 @@ function App() {
 
 {/* Main content */}
 <main className="flex-grow">
-  <div className="max-w-[1390px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div className="max-w-[1390px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
     <NavigationMenu />
 
-    <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
+    <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8 lg:space-y-0 lg:grid lg:grid-cols-[1fr_380px] lg:gap-8">
 
       <div className="space-y-8">
         <PersonalDataForm />
