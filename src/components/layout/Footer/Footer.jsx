@@ -70,7 +70,7 @@ function Footer() {
                   Правовая информация
                 </a>
               </li>
-              <li className="text-[#adb7c0] pt-4 text-sm">
+              <li className="text-[#adb7c0] text-sm">
                 Copyright © 2025 «Казань Тревел»
               </li>
             </ul>
