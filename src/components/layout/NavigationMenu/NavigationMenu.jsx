@@ -14,7 +14,7 @@ const NavigationMenu = () => {
     { label: 'Авиа', icon: <AviationIcon className="mr-2" /> },
     { label: 'Отели', icon: <HotelsIcon className="mr-2" /> },
     { label: 'Ж/д', icon: <RailIcon className="mr-2" /> },
-    { label: 'Моя анкета', icon: <ProfileIcon className="mr-2" /> },
+    { label: 'История', icon: <ProfileIcon className="mr-2" /> },
     { label: 'Настройки', icon: <SettingsIcon className="mr-2" /> },
     { label: 'Выйти', icon: <ExitIcon className="mr-2" /> },
   ];

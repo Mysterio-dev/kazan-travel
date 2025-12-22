@@ -3,6 +3,8 @@ import { IMaskInput } from 'react-imask';
 import './PersonalDataForm.css';
 import { CalendarIcon } from '../../../components/ui/icons';
 import CustomSelect from '../../../components/ui/Select/CustomSelect'
+import CustomDatePicker from '../../../components/ui/DatePicker/CustomDatePicker';     // ✅
+import DateRangePicker from '../../../components/ui/DatePicker/DateRangePicker';
 
 import { SecurityShieldIcon } from '../../ui/icons';
 
@@ -12,6 +14,7 @@ const PersonalDataForm = () => {
     const [selectedDate, setSelectedDate] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [passport, setPassport] = useState('');
+    const [dateRange, setDateRange] = useState({ from: '', to: '' });
 
 
 
@@ -47,18 +50,19 @@ const PersonalDataForm = () => {
                     />
                 </div>
             </div>
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mb-6 md:mb-13">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mb-6 md:mb-13">
+
                 <div className="form-control">
                     <label className="form-label">Дата рождения</label>
-                    <IMaskInput
-                        mask="00.00.0000"
-                        className="form-input appearance-none w-full"
+                    <CustomDatePicker
                         value={selectedDate}
-                        onAccept={(value) => setSelectedDate(value)}
+                        onChange={setSelectedDate}
                         placeholder="дд.мм.гггг"
                     />
                     <CalendarIcon className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+
                 </div>
+
                 <div className="form-control">
                     <CustomSelect
                         placeholder="Пол"
@@ -91,10 +95,18 @@ const PersonalDataForm = () => {
                         placeholder='Выберите город'
                     />
                 </div>
+                <div className="form-control">
+                    <label className="form-label">Диапазон даты</label>
+                    <DateRangePicker
+                        value={dateRange}
+                        onChange={setDateRange}
+                        placeholder="дд.мм.гггг – дд.мм.гггг"
+                    />
+                </div>
 
             </div>
             <h2 className="text-lg mb-3 md:mb-4">Паспорт РФ</h2>
-<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 mb-5 md:mb-7">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 mb-5 md:mb-7">
                 <div className="form-control">
                     <label className="form-label">Серия и номер паспорта</label>
                     <IMaskInput

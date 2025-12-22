@@ -145,47 +145,47 @@ export const ProfileIcon: React.FC<IconSvgProps> = ({
   ...props
 }) => (
   <svg
-    width={size || width}
-    height={size || height}
-    viewBox="0 20 20"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <path
-      d="M10.3086 7.40039H14.6836"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M10.3086 7.3999H14.6836"
+      stroke="#27314A"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
     <path
-      d="M5.31641 7.40039L5.94141 8.02539L7.81641 6.15039"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M5.31641 7.3999L5.94141 8.0249L7.81641 6.1499"
+      stroke="#27314A"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
     <path
       d="M10.3086 13.2334H14.6836"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke="#27314A"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
     <path
-      d="M5.31641 13.2334L5.94141 13.8584L7.81641 1.9834"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M5.31641 13.2334L5.94141 13.8584L7.81641 11.9834"
+      stroke="#27314A"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
     <path
-      d="M7.49935 18.3337H12.493C16.666 18.337 18.3327 16.667 18.3327 12.5003V7.50033C18.327 3.33366 16.666 1.6699 12.4993 1.66699H7.4935C3.33268 1.66699 1.6602 3.33366 1.6602 7.5003V12.5003C1.66602 16.667 3.33268 18.3337 7.49935 18.3337Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M7.50033 18.3332H12.5003C16.667 18.3332 18.3337 16.6665 18.3337 12.4998V7.49984C18.3337 3.33317 16.667 1.6665 12.5003 1.6665H7.50033C3.33366 1.6665 1.66699 3.33317 1.66699 7.49984V12.4998C1.66699 16.6665 3.33366 18.3332 7.50033 18.3332Z"
+      stroke="#27314A"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
