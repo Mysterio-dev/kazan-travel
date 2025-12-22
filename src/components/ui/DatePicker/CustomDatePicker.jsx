@@ -1,5 +1,6 @@
 // src/components/ui/CustomDatePicker.jsx
 import React, { useState, useRef, useEffect } from 'react';
+import { CalendarIcon } from '../icons';
 
 const MONTHS = [
   'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
@@ -271,6 +272,7 @@ const renderMonths = () => {
         }}
         className={`form-input w-full pl-3 pr-10 py-2 cursor-pointer ${className}`}
       />
+      <CalendarIcon className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
       <div
         className={`absolute top-full mt-3 z-10 transition-all duration-300 ${
           isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
