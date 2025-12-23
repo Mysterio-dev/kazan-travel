@@ -325,7 +325,7 @@ const DateRangePicker = ({ value = { from: '', to: '' }, onChange, placeholder =
         className={`form-input w-full pl-3 pr-10 py-2 cursor-pointer ${className}`}
       />
       <div
-        className={`absolute top-full mt-1 z-10 transition-all duration-300 ${
+        className={`absolute top-full mt-3 z-10 transition-all duration-300 ${
           isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
         }`}
       >

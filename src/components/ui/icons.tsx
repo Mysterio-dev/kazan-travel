@@ -142,51 +142,27 @@ export const ProfileIcon: React.FC<IconSvgProps> = ({
   size = 20,
   height,
   width,
+  className,
   ...props
 }) => (
   <svg
-    width="20"
-    height="20"
+    width={size}
+    height={size}
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={`mr-2 ${className}`} // mr-2 можно оставить тут или снаружи — как удобно
+    stroke="currentColor" // ← ключевая строка!
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
-    <path
-      d="M10.3086 7.3999H14.6836"
-      stroke="#27314A"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-    <path
-      d="M5.31641 7.3999L5.94141 8.0249L7.81641 6.1499"
-      stroke="#27314A"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-    <path
-      d="M10.3086 13.2334H14.6836"
-      stroke="#27314A"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-    <path
-      d="M5.31641 13.2334L5.94141 13.8584L7.81641 11.9834"
-      stroke="#27314A"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-    <path
-      d="M7.50033 18.3332H12.5003C16.667 18.3332 18.3337 16.6665 18.3337 12.4998V7.49984C18.3337 3.33317 16.667 1.6665 12.5003 1.6665H7.50033C3.33366 1.6665 1.66699 3.33317 1.66699 7.49984V12.4998C1.66699 16.6665 3.33366 18.3332 7.50033 18.3332Z"
-      stroke="#27314A"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
+    <path d="M10.3086 7.3999H14.6836" />
+    <path d="M5.31641 7.3999L5.94141 8.0249L7.81641 6.1499" />
+    <path d="M10.3086 13.2334H14.6836" />
+    <path d="M5.31641 13.2334L5.94141 13.8584L7.81641 11.9834" />
+    <path d="M7.50033 18.3332H12.5003C16.667 18.3332 18.3337 16.6665 18.3337 12.4998V7.49984C18.3337 3.33317 16.667 1.6665 12.5003 1.6665H7.50033C3.33366 1.6665 1.66699 3.33317 1.66699 7.49984V12.4998C1.66699 16.6665 3.33366 18.3332 7.50033 18.3332Z" />
   </svg>
 );
 

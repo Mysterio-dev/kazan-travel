@@ -12,6 +12,7 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
   const [selectedDate, setSelectedDate] = useState(null);
   const [view, setView] = useState('days'); // 'days' | 'months' | 'years'
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const dropdownRef = useRef(null);
 
   // Синхронизация извне
@@ -23,6 +24,7 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
         if (!isNaN(date.getTime())) {
           setSelectedDate(date);
           setCurrentYear(year);
+          setCurrentMonth(month - 1);
         }
       }
     } else {
@@ -35,7 +37,7 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
-        setView('days'); // сброс при закрытии
+        setView('days');
       }
     };
     if (isOpen) document.addEventListener('mousedown', handleClickOutside);
@@ -52,6 +54,8 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
   const handleDateSelect = (date) => {
     setSelectedDate(date);
     onChange(formatDate(date));
+    setCurrentYear(date.getFullYear());
+    setCurrentMonth(date.getMonth());
     setIsOpen(false);
     setView('days');
   };
@@ -59,21 +63,19 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
   // === Рендер: Выбор дней ===
   const renderDays = () => {
     const today = new Date();
-    const current = selectedDate || new Date(currentYear, 0, 1);
-    const year = current.getFullYear();
-    const month = current.getMonth();
+    const year = currentYear;
+    const month = currentMonth;
 
     const firstDay = new Date(year, month, 1);
     const startDay = new Date(firstDay);
-    const dayOfWeek = firstDay.getDay();
-    const daysToPrevSunday = dayOfWeek; // воскресенье = 0
-    startDay.setDate(firstDay.getDate() - daysToPrevSunday);
+    const dayOfWeek = firstDay.getDay(); // 0 = воскресенье
+    startDay.setDate(firstDay.getDate() - dayOfWeek);
 
     const days = [];
     const day = new Date(startDay);
 
     for (let i = 0; i < 42; i++) {
-      const isCurrentMonth = day.getMonth() === month;
+      const isCurrentMonth = day.getMonth() === month && day.getFullYear() === year;
       const isToday =
         day.getDate() === today.getDate() &&
         day.getMonth() === today.getMonth() &&
@@ -109,9 +111,17 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
     }
 
     const changeMonth = (dir) => {
-      const newDate = new Date(year, month + dir, 1);
-      setCurrentYear(newDate.getFullYear());
-      setSelectedDate(newDate);
+      let newMonth = currentMonth + dir;
+      let newYear = currentYear;
+      if (newMonth < 0) {
+        newMonth = 11;
+        newYear -= 1;
+      } else if (newMonth > 11) {
+        newMonth = 0;
+        newYear += 1;
+      }
+      setCurrentMonth(newMonth);
+      setCurrentYear(newYear);
     };
 
     return (
@@ -149,60 +159,57 @@ const CustomDatePicker = ({ value, onChange, placeholder = 'дд.мм.гггг',
     );
   };
 
-// === Рендер: Выбор месяца ===
-const renderMonths = () => {
-  return (
-    <>
-      <div className="flex items-center justify-between mb-3">
-        <button
-          type="button"
-          onClick={() => setCurrentYear(prev => prev - 1)}
-          className="text-gray-600 hover:text-gray-900 text-sm"
-        >
-          &lt;
-        </button>
-        <button
-          type="button"
-          onClick={() => setView('years')}
-          className="font-medium text-gray-800 hover:text-[#00D5FF] text-sm"
-        >
-          {currentYear}
-        </button>
-        <button
-          type="button"
-          onClick={() => setCurrentYear(prev => prev + 1)}
-          className="text-gray-600 hover:text-gray-900 text-sm"
-        >
-          &gt;
-        </button>
-      </div>
-      <div className="grid grid-cols-3 gap-1">
-        {MONTHS.map((month, idx) => (
+  // === Рендер: Выбор месяца ===
+  const renderMonths = () => {
+    return (
+      <>
+        <div className="flex items-center justify-between mb-3">
           <button
-            key={month}
             type="button"
-            onClick={() => {
-              const newDate = new Date(currentYear, idx, 1);
-              setSelectedDate(newDate);
-              setView('days');
-            }}
-            className={`py-1.5 text-sm rounded hover:bg-gray-100 ${
-              selectedDate && selectedDate.getMonth() === idx
-                ? 'text-[#00D5FF] font-medium'
-                : 'text-gray-800'
-            }`}
+            onClick={() => setCurrentYear(prev => prev - 1)}
+            className="text-gray-600 hover:text-gray-900 text-sm"
           >
-            {month.substring(0, 3)}
+            &lt;
           </button>
-        ))}
-      </div>
-    </>
-  );
-};
+          <button
+            type="button"
+            onClick={() => setView('years')}
+            className="font-medium text-gray-800 hover:text-[#00D5FF] text-sm"
+          >
+            {currentYear}
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentYear(prev => prev + 1)}
+            className="text-gray-600 hover:text-gray-900 text-sm"
+          >
+            &gt;
+          </button>
+        </div>
+        <div className="grid grid-cols-3 gap-1">
+          {MONTHS.map((month, idx) => (
+            <button
+              key={month}
+              type="button"
+              onClick={() => {
+                setCurrentMonth(idx);
+                setView('days');
+              }}
+              className={`py-1.5 text-sm rounded hover:bg-gray-100 ${
+                currentMonth === idx ? 'text-[#00D5FF] font-medium' : 'text-gray-800'
+              }`}
+            >
+              {month.substring(0, 3)}
+            </button>
+          ))}
+        </div>
+      </>
+    );
+  };
 
   // === Рендер: Выбор года (диапазон ±10 лет) ===
   const renderYears = () => {
-    const startYear = Math.floor(currentYear / 10) * 10; // 2020, 2030...
+    const startYear = Math.floor(currentYear / 10) * 10;
     const years = Array.from({ length: 12 }, (_, i) => startYear - 1 + i);
 
     return (
@@ -236,9 +243,7 @@ const renderMonths = () => {
                 setView('months');
               }}
               className={`py-1.5 text-sm rounded hover:bg-gray-100 ${
-                selectedDate && selectedDate.getFullYear() === year
-                  ? 'text-[#00D5FF] font-medium'
-                  : 'text-gray-800'
+                year === currentYear ? 'text-[#00D5FF] font-medium' : 'text-gray-800'
               }`}
             >
               {year}
